@@ -13,7 +13,8 @@ module.exports = {
                         '@js': path.resolve(__dirname, './src/assets/js'),
                         '@css': path.resolve(__dirname, './src/assets/css'),
                         '@img': path.resolve(__dirname, './src/assets/images'),
-                        '@c': path.resolve(__dirname, './src/components')
+                        '@c': path.resolve(__dirname, './src/components'),
+                        '@config': path.resolve(__dirname, './src/config')
                     }
                 }
             };
@@ -25,14 +26,14 @@ module.exports = {
         port: 8080,
         https: false,
         hotOnly: false,
-        disableHostCheck: true
-        // proxy: {// 反向代理的方式解决跨域
-        //     '/api': {
-        //         target: 'http://192.168.0.118:4000'
-        //     },
-        //     '/uploads': {
-        //         target: 'http://192.168.0.118:4000'
-        //     }
-        // }
+        disableHostCheck: true,
+        proxy: {// 反向代理的方式解决跨域
+            '/api': {
+                target: 'http://www.fanzehua.cn'
+            },
+            '/uploads': {
+                target: 'http://www.fanzehua.cn'
+            }
+        }
     }
 };
