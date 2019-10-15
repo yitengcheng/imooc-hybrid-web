@@ -4,6 +4,7 @@ $rootFontSize:375/10;
 // 定义像素转化为rem函数
 @function px2rem($px){
     @return $px / $rootFontSize + rem;
-}
+};
 
-$infoSize: px2rem(14)
+$infoSize: px2rem(14);
+$minInfoSize: px2rem(12);
