@@ -9,6 +9,16 @@
           <img v-for="(item,index) in activityDatas" :key="index" :src="item" />
         </div>
       </activity>
+      <!-- 功能选项 -->
+      <mode-options></mode-options>
+      <!-- 秒杀功能 -->
+      <seconds :dataSource="secondsDatas"></seconds>
+      <!-- 拼购节 -->
+      <activity>
+        <div class="activity-pin-gou-jie">
+          <img src="@img/pinGouJie.gif" />
+        </div>
+      </activity>
     </div>
   </div>
 </template>
@@ -16,13 +26,16 @@
 <script>
 import MySwiper from '@c/swiper/MySwiper';
 import Activity from '@c/currency/Activity';
+import ModeOptions from '@c/currency/ModeOptions';
+import Seconds from '@c/seconds/Seconds';
 export default {
-    components: { MySwiper, Activity },
+    components: { MySwiper, Activity, ModeOptions, Seconds },
     data () {
         return {
             swiperImgs: [],
             swiperHeight: '184px',
-            activityDatas: []
+            activityDatas: [],
+            secondsDatas: []
         };
     },
     created () {
@@ -55,10 +68,11 @@ export default {
             this.$http
                 .all([
                     this.$http.post('/api/getSwiperImgs'),
-                    this.$http.post('/api/getActivityImgs')
+                    this.$http.post('/api/getActivityImgs'),
+                    this.$http.post('/api/getSeconds')
                 ])
                 .then(
-                    this.$http.spread((swiperData, activityData) => {
+                    this.$http.spread((swiperData, activityData, secondsData) => {
                         if (swiperData.success) {
                             swiperData.swiperImgs.forEach(item => {
                                 this.swiperImgs.push(
@@ -73,6 +87,9 @@ export default {
                                 );
                             });
                         }
+                        if (secondsData.success) {
+                            this.secondsDatas = secondsData.list;
+                        }
                     })
                 );
         }
@@ -85,6 +102,8 @@ export default {
   width: 100%;
   height: 100%;
   background-color: $bgColor;
+  overflow: hidden;
+  overflow-y: auto;
   &-content {
     height: 100%;
     .activity-520 {
@@ -94,6 +113,13 @@ export default {
       img {
         display: inline-block;
         width: 33.33%;
+      }
+    }
+    .activity-pin-gou-jie {
+      background-color: #fff;
+      margin-top: $marginSize;
+      img {
+        width: 100%;
       }
     }
   }
