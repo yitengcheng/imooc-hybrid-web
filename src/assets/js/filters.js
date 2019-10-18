@@ -40,12 +40,12 @@ Vue.filter('filterTime', (value) => {
     if (parseInt(arr[1]) < 10) {
         result += ':0' + arr[1];
     } else {
-        result += arr[1];
+        result += ':' + arr[1];
     }
     if (parseInt(arr[2]) < 10) {
         result += ':0' + arr[2];
     } else {
-        result += arr[2];
+        result += ':' + arr[2];
     }
     return result;
 });
