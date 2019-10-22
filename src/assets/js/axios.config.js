@@ -3,8 +3,19 @@ import Vue from 'vue';
 import axios from 'axios';
 
 // 设置axios 请求 baseUrl
-// axios.defaults.baseURL = 'http://192.168.0.103:3000';
+// axios.defaults.baseURL = 'http://www.fanzehua.cn/';
+// 64ad1ce0 - f182 - 11e9 - acd3 - 7b90f1eac841
 
+axios.interceptors.request.use((config) => {
+    // if (config.params) {
+    //     config.params.token = '64ad1ce0-f182-11e9-acd3-7b90f1eac841';
+    // } else {
+    //     config.params = {
+    //         token: '64ad1ce0-f182-11e9-acd3-7b90f1eac841'
+    //     };
+    // }
+    return config;
+});
 /**
  * 设置拦截器interceptors 相应处理
  * 所有使用axios的请求响应，都会优先回调到拦截器中
