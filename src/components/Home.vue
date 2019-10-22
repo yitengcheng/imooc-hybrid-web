@@ -19,6 +19,8 @@
           <img src="@img/pinGouJie.gif" />
         </div>
       </activity>
+      <!-- 商品列表 -->
+      <goods></goods>
     </div>
   </div>
 </template>
@@ -28,8 +30,9 @@ import MySwiper from '@c/swiper/MySwiper';
 import Activity from '@c/currency/Activity';
 import ModeOptions from '@c/currency/ModeOptions';
 import Seconds from '@c/seconds/Seconds';
+import Goods from '@c/goods/Goods';
 export default {
-    components: { MySwiper, Activity, ModeOptions, Seconds },
+    components: { MySwiper, Activity, ModeOptions, Seconds, Goods },
     data () {
         return {
             swiperImgs: [],
