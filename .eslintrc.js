@@ -22,7 +22,8 @@ module.exports = {
             "error",
             4
         ],
-        "eqeqeq": 1
+        "eqeqeq": 1,
+        "no-useless-return": "off"
     },
     parserOptions: {
         parser: 'babel-eslint'
