@@ -15,8 +15,13 @@
       <!-- 图片 -->
       <img class="goods-item-img" :src="item.img" :style="imgStyles[index]" />
       <div class="goods-item-desc">
-        <p class="goods-item-desc-name">
-          <span class="text-line-2">{{item.name}}</span>
+        <p
+          class="goods-item-desc-name text-line-2"
+          :class="{'goods-item-desc-name-hint':!item.isHave}"
+        >
+          <direct v-if="item.isDirect"></direct>
+          <no-have v-if="!item.isHave"></no-have>
+          {{item.name}}
         </p>
         <div class="goods-item-desc-data">
           <p class="goods-item-desc-data-price">￥{{item.price | priceValue}}</p>
@@ -28,8 +33,10 @@
 </template>
 
 <script>
+import Direct from '@c/goods/Direct';
+import NoHave from '@c/goods/NoHave';
 export default {
-    components: {},
+    components: { Direct, NoHave },
     data () {
         return {
             // 数据源
@@ -153,8 +160,12 @@ export default {
     &-desc {
       width: 100%;
       &-name {
+        color: #000;
         font-size: $infoSize;
         line-height: px2rem(18);
+        &-hint {
+          color: $hintColor;
+        }
       }
       &-data {
         width: 100%;
