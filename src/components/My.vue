@@ -1,12 +1,13 @@
 <template>
   <div class="my">
-    <h1>my</h1>
+    <navigation-bar pageName="个人中心" :isShowBack="false"></navigation-bar>
   </div>
 </template>
 
 <script>
+import NavigationBar from '@c/currency/NavigationBar';
 export default {
-    components: {},
+    components: { NavigationBar },
     data () {
         return {};
     },
