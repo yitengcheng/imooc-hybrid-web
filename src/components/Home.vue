@@ -1,5 +1,19 @@
 <template>
   <div class="home">
+    <navigation-bar :isShowBack="false">
+      <!-- 左侧插槽 -->
+      <template slot="nav-left">
+        <img src="@img/more-white.svg" alt />
+      </template>
+      <!-- 中间插槽 -->
+      <template slot="nav-center">
+        <search :bgColor="'#fff'" :hintColor="'#999'" :icon="require('@img/search.svg')"></search>
+      </template>
+      <!-- 右侧插槽 -->
+      <template slot="nav-right">
+        <img src="@img/message-white.svg" alt />
+      </template>
+    </navigation-bar>
     <div class="home-content">
       <!-- swiper -->
       <my-swiper :swiperImgs="swiperImgs" :height="swiperHeight"></my-swiper>
@@ -31,8 +45,18 @@ import Activity from '@c/currency/Activity';
 import ModeOptions from '@c/currency/ModeOptions';
 import Seconds from '@c/seconds/Seconds';
 import Goods from '@c/goods/Goods';
+import NavigationBar from '@c/currency/NavigationBar';
+import Search from '@c/currency/Search';
 export default {
-    components: { MySwiper, Activity, ModeOptions, Seconds, Goods },
+    components: {
+        MySwiper,
+        Activity,
+        ModeOptions,
+        Seconds,
+        Goods,
+        NavigationBar,
+        Search
+    },
     data () {
         return {
             swiperImgs: [],

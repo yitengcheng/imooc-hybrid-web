@@ -58,6 +58,9 @@ export default {
 </script>
 <style lang='scss'>
 @import "@css/style.scss";
+.swiper-slide-img {
+  width: 100%;
+}
 .swiper-pagination {
   bottom: px2rem(12);
   .custom-bullet-class {
