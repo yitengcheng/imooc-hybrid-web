@@ -7,18 +7,19 @@ module.exports = {
             // 为生产环境修改配置...
         } else {
             // 为开发环境修改配置...
-            return {
-                resolve: {
-                    alias: {
-                        '@js': path.resolve(__dirname, './src/assets/js'),
-                        '@css': path.resolve(__dirname, './src/assets/css'),
-                        '@img': path.resolve(__dirname, './src/assets/images'),
-                        '@c': path.resolve(__dirname, './src/components'),
-                        '@config': path.resolve(__dirname, './src/config')
-                    }
-                }
-            };
+            // 只会在开发环境生效,当我们使用build打包一个项目的时候,那么这里的配置不会生效
         }
+        return {
+            resolve: {
+                alias: {
+                    '@js': path.resolve(__dirname, './src/assets/js'),
+                    '@css': path.resolve(__dirname, './src/assets/css'),
+                    '@img': path.resolve(__dirname, './src/assets/images'),
+                    '@c': path.resolve(__dirname, './src/components'),
+                    '@config': path.resolve(__dirname, './src/config')
+                }
+            }
+        };
     },
     devServer: {
         open: true,
