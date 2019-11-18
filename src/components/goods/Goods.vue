@@ -30,6 +30,7 @@
       v-for="(item,index) in  sortGoodsData"
       :key="index"
       ref="goodsItem"
+      @click="onItemClick(item)"
       :style="goodsItemStyles[index]"
     >
       <!-- 图片 -->
@@ -305,6 +306,22 @@ export default {
 
                 break;
             }
+        },
+        /**
+     * 商品点击事件
+     */
+        onItemClick (item) {
+            // 商品无库存不允许跳转
+            if (!item.isHave) {
+                alert('该商品无库存');
+                return;
+            }
+            this.$router.push({
+                name: 'goodsDetail',
+                params: {
+                    good: item
+                }
+            });
         }
     },
     watch: {
