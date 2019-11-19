@@ -319,7 +319,8 @@ export default {
             this.$router.push({
                 name: 'goodsDetail',
                 params: {
-                    good: item
+                    good: item,
+                    routerType: 'push'
                 }
             });
         }
