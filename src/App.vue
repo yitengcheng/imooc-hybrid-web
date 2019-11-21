@@ -16,7 +16,10 @@
           3、通过transition的方式来为router-view指定对应的动画效果
     -->
     <transition :name="transitionName">
-      <router-view />
+      <!-- 所有通过 router-view加载的页面组件都会被缓存 -->
+      <keep-alive :include="virtualTaskStack">
+        <router-view />
+      </keep-alive>
     </transition>
   </div>
 </template>
@@ -25,7 +28,9 @@
 export default {
     data () {
         return {
-            transitionName: 'fold-left'
+            transitionName: 'fold-left',
+            // 虚拟任务栈
+            virtualTaskStack: ['imooc']
         };
     },
     watch: {
@@ -34,9 +39,13 @@ export default {
             // 获取到携带的标记
             const routerType = to.params.routerType;
             if (routerType === 'push') {
+                // 当进入新页面的时候，保存新页面名称到虚拟任务栈
+                this.virtualTaskStack.push(to.name);
                 // 跳转页面
                 this.transitionName = 'fold-left';
             } else {
+                // 执行后退操作的时候，把最后一个页面从任务栈中弹出
+                this.virtualTaskStack.pop();
                 // 后退页面
                 this.transitionName = 'fold-right';
             }

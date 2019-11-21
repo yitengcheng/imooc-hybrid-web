@@ -10,6 +10,7 @@
 <script>
 import ToolBar from '@c/currency/ToolBar';
 export default {
+    name: 'imooc',
     components: {
         ToolBar,
         // 异步组件引入方式，异步组件：只有在需要去展示这个组件的时候，才会把这个组件进行渲染

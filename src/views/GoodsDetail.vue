@@ -77,6 +77,7 @@ import MySwiper from '@c/swiper/MySwiper';
 import Direct from '@c/goods/Direct';
 import Parallax from '@c/parallax/Parallax';
 export default {
+    name: 'goodsDetail',
     components: { NavgationBar, MySwiper, Direct, Parallax },
     data () {
         return {

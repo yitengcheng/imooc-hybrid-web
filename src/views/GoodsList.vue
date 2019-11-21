@@ -17,6 +17,7 @@ import NavigationBar from '@c/currency/NavigationBar';
 import GoodsOptions from '@c/goods/GoodsOptions';
 import Goods from '@c/goods/Goods';
 export default {
+    name: 'goodsList',
     components: { NavigationBar, GoodsOptions, Goods },
     data () {
         return {
