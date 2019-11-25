@@ -1,5 +1,5 @@
 <template>
-  <div class="home" @scroll="onScrollChange">
+  <div class="home" @scroll="onScrollChange" ref="home">
     <navigation-bar :isShowBack="false" :navBarStyle="navBarStyle">
       <!-- 左侧插槽 -->
       <template slot="nav-left">
@@ -112,6 +112,13 @@ export default {
     created () {
         this.navBarCurrentSlotStyle = this.navBarSlotStyle.normal;
         this.initData();
+    },
+    /**
+   * keepAlive 组件被激活的时候调用
+   * 去为滑动模块指定滑动距离
+   */
+    activated () {
+        this.$refs.home.scrollTop = this.scrollTopValue;
     },
     methods: {
     /**

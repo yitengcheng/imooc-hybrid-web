@@ -3,6 +3,8 @@
     class="goods"
     :class="[layoutClass,{'goods-scroll':isScroll}]"
     :style="{height:goodsViewHeight}"
+    ref="goods"
+    @scroll="onScrollChange"
   >
     <!--
         如何在同一个组件中展示不同的样式:
@@ -108,11 +110,20 @@ export default {
             // 1.垂直列表的展示形式(默认) -> goods-list & goods-list-item
             // 2.网格布局的展示形式 -> goods-grid & goods-grid-item
             layoutClass: 'goods-list',
-            layoutItemClass: 'goods-list-item'
+            layoutItemClass: 'goods-list-item',
+            // 滑动距离
+            scrollTopValue: 0
         };
     },
     created () {
         this.initData();
+    },
+    /**
+   * keepAlive 组件被激活的时候调用
+   * 去为滑动模块指定滑动距离
+   */
+    activated () {
+        this.$refs.goods.scrollTop = this.scrollTopValue;
     },
     methods: {
     /**
@@ -323,6 +334,9 @@ export default {
                     routerType: 'push'
                 }
             });
+        },
+        onScrollChange ($event) {
+            this.scrollTopValue = $event.target.scrollTop;
         }
     },
     watch: {
