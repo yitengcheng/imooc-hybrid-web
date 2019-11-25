@@ -1,8 +1,10 @@
 <template>
   <!-- 在vue这种单页面的应用程序中，它只存在于一个页面 - app.vue，其他的都是组件 -->
   <div class="main">
-    <!-- 动态组件 -->
-    <component :is="currentComponent"></component>
+    <keep-alive>
+      <!-- 动态组件 -->
+      <component :is="currentComponent"></component>
+    </keep-alive>
     <ToolBar @onChangeFragment="onChangeFragment" />
   </div>
 </template>
